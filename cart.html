@@ -3,16 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paiement | APEX SETUPS</title>
+  <title>Paiement Sécurisé | APEX SETUPS</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Styles spécifiques aux nouveaux moyens de paiement */
+    .pm-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+    .pm-tab {
+      flex: 1; padding: 12px; background: var(--bg-dark); border: 1px solid var(--border);
+      color: var(--text-muted); font-family: var(--font-cond); font-weight: 700; letter-spacing: 1px;
+      cursor: pointer; transition: all 0.3s; text-align: center;
+    }
+    .pm-tab.active { background: rgba(0,212,255,0.1); border-color: var(--acc-cyan); color: var(--acc-cyan); }
+    .pm-content { display: none; }
+    .pm-content.active { display: block; }
+    
+    .btn-paypal { background: #ffc439; color: #003087; border: none; width: 100%; padding: 16px; font-weight: 900; font-size: 16px; border-radius: 4px; cursor: pointer; }
+    .btn-applepay { background: #000; color: #fff; border: 1px solid #333; width: 100%; padding: 16px; font-weight: 700; font-size: 18px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;}
+    
+    /* Modals spécifiques */
+    .bank-modal { background: #fff; color: #333; border-radius: 8px; padding: 30px; text-align: center; }
+    .bank-header { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; font-weight: bold; color: #0052cc; }
+    .bank-input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; text-align: center; font-size: 18px; letter-spacing: 4px; margin-bottom: 20px; color: #000; }
+    .bank-btn { background: #0052cc; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; }
+    
+    .paypal-modal { background: #fff; border-radius: 12px; padding: 40px 30px; text-align: center; color: #333; }
+    .paypal-input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; color: #000; }
+    .paypal-btn { background: #0070ba; color: white; border: none; width: 100%; padding: 14px; border-radius: 24px; font-weight: bold; cursor: pointer; }
+    
+    .apple-modal { background: #1c1c1e; color: #fff; border-radius: 20px; padding: 40px; text-align: center; border: 1px solid #333; }
+    .face-id-icon { font-size: 60px; margin-bottom: 20px; animation: pulse 2s infinite; color: #0a84ff; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
+  </style>
 </head>
 <body>
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo"><span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span></a>
-  </div>
-</nav>
+<nav id="navbar"><div class="nav-inner"><a href="index.html" class="nav-logo"><span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span></a></div></nav>
 
 <div class="page-header" style="padding-bottom: 20px;">
   <h1>FINALISER <span class="text-accent">LA COMMANDE</span></h1>
@@ -25,24 +50,43 @@
       <div class="form-grid">
         <div class="form-group"><label>PRÉNOM</label><input type="text" placeholder="Ayrton"></div>
         <div class="form-group"><label>NOM</label><input type="text" placeholder="Senna"></div>
-        <div class="form-group full"><label>EMAIL (Pour recevoir les fichiers)</label><input type="email" placeholder="pilote@apex.com"></div>
+        <div class="form-group full"><label>EMAIL</label><input type="email" placeholder="pilote@apex.com"></div>
       </div>
     </div>
     
     <div class="checkout-section">
-      <div class="checkout-section-title">2. PAIEMENT SÉCURISÉ</div>
-      <div class="payment-card">
-        <div class="payment-logos">
-          <span class="pay-logo active">CB</span><span class="pay-logo">VISA</span>
+      <div class="checkout-section-title">2. MOYEN DE PAIEMENT</div>
+      
+      <div class="pm-tabs">
+        <div class="pm-tab active" onclick="switchTab('card')">CARTE</div>
+        <div class="pm-tab" onclick="switchTab('paypal')">PAYPAL</div>
+        <div class="pm-tab" onclick="switchTab('apple')">APPLE PAY</div>
+      </div>
+
+      <div id="tab-card" class="pm-content active">
+        <div class="payment-card">
+          <div class="form-group full" style="margin-bottom: 15px;">
+            <label>NUMÉRO DE CARTE</label>
+            <input type="text" id="cc-num" placeholder="4000 1234 5678 9010" maxlength="19">
+          </div>
+          <div class="form-grid">
+            <div class="form-group"><label>EXPIRATION</label><input type="text" id="cc-exp" placeholder="12/29" maxlength="5"></div>
+            <div class="form-group"><label>CVC</label><input type="password" id="cc-cvc" placeholder="123" maxlength="3"></div>
+          </div>
+          <div class="test-info" style="margin-top: 15px;"><strong>INFOS DE TEST OBLIGATOIRES</strong>Carte: 4000 1234 5678 9010 | Exp: 12/29 | CVC: 123</div>
         </div>
-        <div class="form-group full" style="margin-bottom: 15px;">
-          <label>NUMÉRO DE CARTE FICTIF</label>
-          <input type="text" value="4000 1234 5678 9010" readonly style="color: var(--acc-cyan); font-family: monospace;">
-          <div class="test-info"><strong>MODE TEST ACTIVÉ</strong>Utilise les données pré-remplies.</div>
+      </div>
+
+      <div id="tab-paypal" class="pm-content">
+        <div class="payment-card" style="text-align: center; padding: 40px 20px;">
+          <p style="color: var(--text-muted); margin-bottom: 20px;">Vous allez être redirigé vers l'interface sécurisée PayPal.</p>
+          <button class="btn-paypal" onclick="openModal('paypalModal')">Payer avec PayPal</button>
         </div>
-        <div class="form-grid">
-          <div class="form-group"><label>EXPIRATION</label><input type="text" value="12/29" readonly></div>
-          <div class="form-group"><label>CVC</label><input type="text" value="123" readonly></div>
+      </div>
+
+      <div id="tab-apple" class="pm-content">
+        <div class="payment-card" style="text-align: center; padding: 40px 20px;">
+          <button class="btn-applepay" onclick="openModal('appleModal')"> Apple Pay</button>
         </div>
       </div>
     </div>
@@ -51,25 +95,53 @@
   <aside>
     <div class="order-summary">
       <div class="os-title">RÉSUMÉ DU PANIER</div>
-      <div class="os-items" id="cartItems">
-        </div>
+      <div class="os-items" id="cartItems"></div>
       <div class="os-totals">
-        <div class="os-total">
-          <span>TOTAL</span>
-          <span class="text-accent" id="cartTotal">€0.00</span>
-        </div>
+        <div class="os-total"><span>TOTAL</span><span class="text-accent" id="cartTotal">€0.00</span></div>
       </div>
-      <button class="pay-btn" id="payBtn">CONFIRMER LE PAIEMENT</button>
-      <div class="secure-badge">🔒 Paiement chiffré de bout en bout</div>
+      <button class="pay-btn" id="payBtnCard">PAYER LA COMMANDE</button>
+      <div class="secure-badge" id="paymentError" style="color: #ff3366; display: none;">Erreur : Coordonnées bancaires invalides.</div>
     </div>
   </aside>
+</div>
+
+<div class="modal-overlay" id="secure3DModal">
+  <div class="modal bank-modal">
+    <div class="bank-header">🔒 VÉRIFICATION 3D SECURE</div>
+    <p style="font-size: 14px; margin-bottom: 20px;">Un code vous a été envoyé par SMS pour valider la transaction de <strong id="secureAmount">0.00€</strong> chez APEX SETUPS.</p>
+    <input type="text" id="smsCode" class="bank-input" placeholder="Entrez 0000" maxlength="4">
+    <p id="smsError" style="color: red; font-size: 12px; display: none; margin-bottom: 10px;">Code incorrect. Utilisez 0000.</p>
+    <button class="bank-btn" onclick="validate3DS()">VALIDER LE PAIEMENT</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="paypalModal">
+  <div class="modal paypal-modal">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 30px; margin-bottom: 20px;">
+    <p style="font-size: 14px; margin-bottom: 20px; color: #666;">Connectez-vous pour payer <strong id="paypalAmount">0.00€</strong></p>
+    <input type="email" id="pp-email" class="paypal-input" placeholder="paypal@apex.com">
+    <input type="password" id="pp-pwd" class="paypal-input" placeholder="Mot de passe (1234)">
+    <p id="ppError" style="color: red; font-size: 12px; display: none; margin-bottom: 10px;">Identifiants PayPal incorrects.</p>
+    <button class="paypal-btn" onclick="validatePayPal()">Connexion & Paiement</button>
+    <button onclick="closeModal('paypalModal')" style="background:none; border:none; color:#0070ba; margin-top:15px; cursor:pointer;">Annuler</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="appleModal">
+  <div class="modal apple-modal">
+    <div class="face-id-icon">◎</div>
+    <h3 style="margin-bottom: 10px;">Face ID</h3>
+    <p style="color: #888; font-size: 14px; margin-bottom: 30px;">Double-cliquez pour payer <strong id="appleAmount">0.00€</strong></p>
+    <button onclick="validateApplePay()" style="background: #0a84ff; color: white; border: none; padding: 12px 24px; border-radius: 20px; cursor: pointer; font-weight: bold;">Simuler Double Clic</button>
+    <button onclick="closeModal('appleModal')" style="background:none; border:none; color:#888; display:block; width:100%; margin-top:20px; cursor:pointer;">Annuler</button>
+  </div>
 </div>
 
 <div class="modal-overlay" id="successModal">
   <div class="modal">
     <div class="modal-icon" style="color: #00d46a;">✓</div>
-    <h2>PAIEMENT VALIDÉ</h2>
-    <p>Tes setups et fichiers MoTeC t'ont été envoyés par email. On se retrouve en piste !</p>
+    <h2>PAIEMENT ACCEPTÉ</h2>
+    <p>Merci pour ta commande ! Le téléchargement de ton pack de setups a démarré automatiquement.</p>
     <a href="shop.html" class="modal-btn">RETOURNER AU PADDOCK</a>
   </div>
 </div>

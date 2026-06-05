@@ -137,13 +137,14 @@ function initShop() {
 function initCart() {
     const container = document.getElementById('cartItems');
     const totalEl = document.getElementById('cartTotal');
-    const payBtn = document.getElementById('payBtn');
+    const payBtnCard = document.getElementById('payBtnCard');
     
+    if (!container) return; // Sécurité si on n'est pas sur cart.html
+
     if (cart.length === 0) {
         container.innerHTML = `<p style="color: var(--text-muted);">Ton panier est vide.</p>`;
         totalEl.textContent = '€0.00';
-        payBtn.style.opacity = '0.5';
-        payBtn.style.pointerEvents = 'none';
+        if(payBtnCard) payBtnCard.style.display = 'none';
         return;
     }
 
@@ -160,20 +161,121 @@ function initCart() {
         </div>`;
     }).join('');
 
-    totalEl.textContent = `€${total.toFixed(2)}`;
-    payBtn.style.opacity = '1';
-    payBtn.style.pointerEvents = 'all';
+    const formattedTotal = `€${total.toFixed(2)}`;
+    totalEl.textContent = formattedTotal;
+    
+    // Met à jour les montants dans les modals
+    const secureAmt = document.getElementById('secureAmount');
+    const ppAmt = document.getElementById('paypalAmount');
+    const appleAmt = document.getElementById('appleAmount');
+    if(secureAmt) secureAmt.textContent = formattedTotal;
+    if(ppAmt) ppAmt.textContent = formattedTotal;
+    if(appleAmt) appleAmt.textContent = formattedTotal;
 
-    // Formulaire de paiement
-    payBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Simulation Loading
-        payBtn.textContent = 'TRAITEMENT...';
-        setTimeout(() => {
-            document.getElementById('successModal').classList.add('show');
-            clearCart();
-        }, 1500);
-    });
+    // --- LOGIQUE DE PAIEMENT CARTE BANCAIRE ---
+    if(payBtnCard) {
+        payBtnCard.addEventListener('click', () => {
+            const num = document.getElementById('cc-num').value.replace(/\s/g, '');
+            const exp = document.getElementById('cc-exp').value;
+            const cvc = document.getElementById('cc-cvc').value;
+            const errorMsg = document.getElementById('paymentError');
+
+            // Vérification stricte des infos test
+            if (num === '4000123456789010' && exp === '12/29' && cvc === '123') {
+                errorMsg.style.display = 'none';
+                openModal('secure3DModal'); // Ouvre la validation banque
+            } else {
+                errorMsg.style.display = 'block';
+                showToast('Carte refusée. Vérifiez les données.', 'error');
+            }
+        });
+    }
+}
+
+// --- FONCTIONS UTILITAIRES DE PAIEMENT ---
+
+// Gestion des onglets de paiement
+function switchTab(method) {
+    // Boutons
+    document.querySelectorAll('.pm-tab').forEach(t => t.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    
+    // Contenus
+    document.querySelectorAll('.pm-content').forEach(c => c.classList.remove('active'));
+    document.getElementById(`tab-${method}`).classList.add('active');
+
+    // Cacher le bouton "Payer" général si on utilise PayPal ou Apple (qui ont leurs propres boutons)
+    const mainBtn = document.getElementById('payBtnCard');
+    const errorMsg = document.getElementById('paymentError');
+    if(mainBtn) {
+        mainBtn.style.display = method === 'card' && cart.length > 0 ? 'block' : 'none';
+    }
+    if(errorMsg) errorMsg.style.display = 'none';
+}
+
+// Gestion des Modals
+function openModal(id) { document.getElementById(id).classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+// Validation 3D Secure
+function validate3DS() {
+    const code = document.getElementById('smsCode').value;
+    const error = document.getElementById('smsError');
+    if (code === '0000') {
+        error.style.display = 'none';
+        closeModal('secure3DModal');
+        triggerSuccessAndDownload();
+    } else {
+        error.style.display = 'block';
+    }
+}
+
+// Validation PayPal
+function validatePayPal() {
+    const email = document.getElementById('pp-email').value;
+    const pwd = document.getElementById('pp-pwd').value;
+    const error = document.getElementById('ppError');
+    if (email === 'paypal@apex.com' && pwd === '1234') {
+        error.style.display = 'none';
+        closeModal('paypalModal');
+        triggerSuccessAndDownload();
+    } else {
+        error.style.display = 'block';
+    }
+}
+
+// Validation Apple Pay
+function validateApplePay() {
+    closeModal('appleModal');
+    triggerSuccessAndDownload();
+}
+
+// Succès Final & Génération Fichier
+function triggerSuccessAndDownload() {
+    openModal('successModal');
+    
+    // Génération dynamique d'un faux fichier .json contenant la data de la commande
+    const orderData = {
+        orderId: "APEX-" + Math.floor(Math.random() * 100000),
+        date: new Date().toISOString(),
+        items: cart,
+        status: "PAID",
+        message: "Ceci est un fichier de setup simulé. Amuse-toi bien en piste !"
+    };
+
+    const blob = new Blob([JSON.stringify(orderData, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    
+    // Création invisible d'un lien pour forcer le téléchargement
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ApexSetups_Commande.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    // Vider le panier
+    clearCart();
 }
 
 // --- PAGE ACCOUNT / AUTH ---
