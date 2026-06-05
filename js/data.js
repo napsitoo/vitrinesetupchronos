@@ -5,7 +5,8 @@ const productsData = [
       car: "Ferrari 296 GT3",
       circuit: "Spa-Francorchamps",
       price: 14.99,
-      image: "https://images.unsplash.com/photo-1541447270866-f747c8b93ce6?w=600&q=80",
+      // Vraie Ferrari 296 GT3 (Rouge/Carbone)
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Ferrari_296_GT3_IAA_2023_1X7A0300.jpg/800px-Ferrari_296_GT3_IAA_2023_1X7A0300.jpg",
       featured: true,
       hot: true
     },
@@ -15,7 +16,8 @@ const productsData = [
       car: "Porsche 963 LMDh",
       circuit: "Le Mans",
       price: 12.99,
-      image: "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&q=80",
+      // Vraie Porsche 963
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Porsche_963_IAA_2023_1X7A0265.jpg/800px-Porsche_963_IAA_2023_1X7A0265.jpg",
       featured: true,
       hot: false
     },
@@ -23,9 +25,10 @@ const productsData = [
       id: "acc-m4",
       game: "acc",
       car: "BMW M4 GT3",
-      circuit: "Nürburgring Nordschleife",
+      circuit: "Nürburgring",
       price: 14.99,
-      image: "https://images.unsplash.com/photo-1611821064430-0d40220e4b41?w=600&q=80",
+      // Vraie BMW M4 GT3 (Livrée M Motorsport)
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/BMW_M4_GT3_IAA_2023_1X7A0222.jpg/800px-BMW_M4_GT3_IAA_2023_1X7A0222.jpg",
       featured: true,
       hot: true
     },
@@ -35,7 +38,8 @@ const productsData = [
       car: "Ferrari 499P LMH",
       circuit: "Monza",
       price: 12.99,
-      image: "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&q=80",
+      // Vraie Ferrari 499P (Gagnante Le Mans)
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/2023_Ferrari_499P_No.50.jpg/800px-2023_Ferrari_499P_No.50.jpg",
       featured: false,
       hot: false
     },
@@ -45,7 +49,8 @@ const productsData = [
       car: "Porsche 992 GT3 R",
       circuit: "Suzuka",
       price: 14.99,
-      image: "https://images.unsplash.com/photo-1503376710356-748c5821d8c0?w=600&q=80",
+      // Vraie Porsche 911 GT3 R type 992
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Porsche_911_GT3_R_%28992%29_Genf_2024_1Y7A5223.jpg/800px-Porsche_911_GT3_R_%28992%29_Genf_2024_1Y7A5223.jpg",
       featured: false,
       hot: false
     }

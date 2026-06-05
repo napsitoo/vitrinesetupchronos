@@ -10,13 +10,11 @@
 </head>
 <body>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="loader-bar"></div>
   <div class="loader-text">APEX SETUPS<span class="blink">_</span></div>
 </div>
 
-<!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -29,7 +27,10 @@
       <li><a href="index.html#about">À PROPOS</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="cart.html" class="cart-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cartCount">0</span></a>
+      <a href="cart.html" class="cart-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </a>
       <a href="account.html" class="btn-login" id="navLoginBtn">CONNEXION</a>
     </div>
     <button class="nav-burger" id="navBurger">
@@ -44,7 +45,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
     <div class="hero-grid"></div>
@@ -52,7 +52,6 @@
     <div class="hero-glow glow-2"></div>
   </div>
 
-  <!-- Animated race line -->
   <div class="race-line"></div>
 
   <div class="hero-content">
@@ -78,11 +77,10 @@
     </div>
   </div>
 
-  <!-- Car silhouette (SVG) -->
   <div class="hero-car">
     <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" class="car-svg">
       <defs>
-        <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id="lmgt3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8"/>
           <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.9"/>
           <stop offset="100%" style="stop-color:#ff6b00;stop-opacity:0.8"/>
@@ -91,33 +89,38 @@
           <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
           <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
+        <filter id="headlight-glow">
+          <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
-      <!-- GT3 Car silhouette -->
-      <g filter="url(#glow)" opacity="0.85">
-        <!-- Body -->
-        <path d="M120,200 L130,160 L200,120 L280,100 L420,90 L560,95 L650,110 L720,140 L760,170 L770,200 Z" fill="url(#carGrad)" opacity="0.3"/>
-        <path d="M120,200 L130,160 L200,120 L280,100 L420,90 L560,95 L650,110 L720,140 L760,170 L770,200" fill="none" stroke="url(#carGrad)" stroke-width="2.5"/>
-        <!-- Roof -->
-        <path d="M250,100 L290,70 L430,55 L530,58 L590,80 L610,100" fill="none" stroke="url(#carGrad)" stroke-width="2" opacity="0.7"/>
-        <!-- Front splitter -->
-        <path d="M760,200 L790,200 L790,205 L760,205 Z" fill="#ff6b00" opacity="0.8"/>
-        <!-- Rear wing -->
-        <path d="M120,155 L100,155 L95,145 L125,145" fill="none" stroke="#00d4ff" stroke-width="2"/>
-        <!-- Wheels -->
-        <circle cx="230" cy="210" r="38" fill="none" stroke="url(#carGrad)" stroke-width="2.5"/>
-        <circle cx="230" cy="210" r="20" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
-        <circle cx="660" cy="210" r="38" fill="none" stroke="url(#carGrad)" stroke-width="2.5"/>
-        <circle cx="660" cy="210" r="20" fill="none" stroke="#ff6b00" stroke-width="1.5" opacity="0.5"/>
-        <!-- Wheel arches -->
-        <path d="M170,200 Q175,165 230,162 Q285,165 290,200" fill="none" stroke="url(#carGrad)" stroke-width="1.5"/>
-        <path d="M600,200 Q605,165 660,162 Q715,165 720,200" fill="none" stroke="url(#carGrad)" stroke-width="1.5"/>
-        <!-- Details -->
-        <line x1="400" y1="90" x2="400" y2="200" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
-        <path d="M310,100 L310,115 L380,110 L380,95" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
-        <!-- Headlights -->
-        <path d="M755,155 L775,158 L775,168 L755,165 Z" fill="#00d4ff" opacity="0.9"/>
-        <!-- Ground effect line -->
-        <line x1="90" y1="220" x2="800" y2="220" stroke="url(#carGrad)" stroke-width="1" opacity="0.3"/>
+      <g filter="url(#glow)" opacity="0.95">
+        <path d="M100,190 L110,140 L180,110 L280,95 L400,90 L520,100 L620,115 L720,130 L780,160 L790,195 L750,210 L120,210 Z" fill="url(#lmgt3Grad)" opacity="0.15"/>
+        <path d="M100,190 L110,140 L180,110 L280,95 L400,90 L520,100 L620,115 L720,130 L780,160 L790,195" fill="none" stroke="url(#lmgt3Grad)" stroke-width="3"/>
+        <path d="M260,95 L320,60 L420,50 L490,60 L570,90" fill="none" stroke="url(#lmgt3Grad)" stroke-width="2.5" opacity="0.8"/>
+        <path d="M120,135 L80,130 L70,120 L130,125" fill="none" stroke="#00d4ff" stroke-width="3"/>
+        <path d="M105,130 L115,90 L150,90" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/> 
+        <path d="M85,130 L95,95 L130,95" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.4"/> 
+        <path d="M100,190 L70,190 L70,210 L120,210" fill="none" stroke="#00d4ff" stroke-width="2.5"/>
+        <line x1="80" y1="190" x2="80" y2="210" stroke="#00d4ff" stroke-width="2"/>
+        <line x1="95" y1="195" x2="95" y2="210" stroke="#00d4ff" stroke-width="2"/>
+        <path d="M780,195 L820,195 L820,205 L770,205" fill="#ff6b00" opacity="0.9"/>
+        <path d="M780,170 L800,165" fill="none" stroke="#ffffff" stroke-width="2"/> 
+        <path d="M775,180 L805,175" fill="none" stroke="#ffffff" stroke-width="2"/> 
+        <circle cx="210" cy="200" r="42" fill="#0a0a0a" stroke="url(#lmgt3Grad)" stroke-width="3"/>
+        <circle cx="210" cy="200" r="22" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.7"/>
+        <circle cx="650" cy="200" r="42" fill="#0a0a0a" stroke="url(#lmgt3Grad)" stroke-width="3"/>
+        <circle cx="650" cy="200" r="22" fill="none" stroke="#ff6b00" stroke-width="2" opacity="0.7"/>
+        <path d="M145,195 Q150,140 210,135 Q270,140 275,195" fill="none" stroke="url(#lmgt3Grad)" stroke-width="2"/>
+        <path d="M585,195 Q590,140 650,135 Q710,140 715,195" fill="none" stroke="url(#lmgt3Grad)" stroke-width="2"/>
+        <g filter="url(#headlight-glow)">
+          <path d="M750,150 L775,145 L785,155 L750,165 Z" fill="#ffee00" opacity="0.9"/>
+          <line x1="770" y1="150" x2="880" y2="160" stroke="#ffee00" stroke-width="5" opacity="0.5"/> 
+        </g>
+        <rect x="340" y="110" width="45" height="35" rx="3" fill="none" stroke="#00ffaa" stroke-width="2" opacity="0.8"/>
+        <text x="346" y="136" font-family="Bebas Neue, sans-serif" font-weight="bold" font-size="28" fill="#00ffaa" opacity="0.9">92</text>
+        <path d="M430,150 L480,150 L470,180 L420,180 Z" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3"/>
+        <line x1="50" y1="210" x2="850" y2="210" stroke="url(#lmgt3Grad)" stroke-width="1.5" opacity="0.5"/>
       </g>
     </svg>
   </div>
@@ -128,13 +131,12 @@
   </div>
 </section>
 
-<!-- GAMES SECTION -->
 <section id="games" class="section-games">
   <div class="container">
     <div class="section-label">PLATEFORMES SUPPORTÉES</div>
     <h2 class="section-title">Choisis ton <span class="text-accent">univers</span></h2>
     <div class="games-grid">
-      <div class="game-card game-acc" data-href="shop.html?game=acc">
+      <div class="game-card game-acc" onclick="window.location.href='shop.html?game=acc'">
         <div class="game-bg"></div>
         <div class="game-content">
           <div class="game-tag">GT3 · GT4 · GTC</div>
@@ -144,7 +146,7 @@
         </div>
         <div class="game-corner"></div>
       </div>
-      <div class="game-card game-lmu" data-href="shop.html?game=lmu">
+      <div class="game-card game-lmu" onclick="window.location.href='shop.html?game=lmu'">
         <div class="game-bg"></div>
         <div class="game-content">
           <div class="game-tag">HYPERCAR · LMP2 · GT3</div>
@@ -158,7 +160,6 @@
   </div>
 </section>
 
-<!-- FEATURED SETUPS -->
 <section id="featured" class="section-featured">
   <div class="container">
     <div class="section-header">
@@ -168,13 +169,10 @@
       </div>
       <a href="shop.html" class="btn-ghost-sm">TOUT VOIR →</a>
     </div>
-    <div class="setups-grid" id="featuredSetups">
-      <!-- Injected by JS -->
-    </div>
+    <div class="setups-grid" id="featuredSetups"></div>
   </div>
 </section>
 
-<!-- COACHING BANNER -->
 <section id="coaching-banner" class="section-coaching">
   <div class="coaching-bg">
     <div class="coaching-track"></div>
@@ -209,7 +207,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="section-testimonials">
   <div class="container">
     <div class="section-label">ILS EN PARLENT</div>
@@ -244,7 +241,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="section-about">
   <div class="container">
     <div class="about-grid">
@@ -276,10 +272,8 @@
           </div>
           <div class="tw-graph">
             <svg viewBox="0 0 260 60" xmlns="http://www.w3.org/2000/svg">
-              <polyline points="0,50 20,42 40,38 60,30 80,25 100,20 120,22 140,18 160,15 180,20 200,24 220,18 240,12 260,10"
-                fill="none" stroke="#00d4ff" stroke-width="2"/>
-              <polyline points="0,50 20,42 40,38 60,30 80,25 100,20 120,22 140,18 160,15 180,20 200,24 220,18 240,12 260,10"
-                fill="url(#areaFill)" stroke="none" opacity="0.15"/>
+              <polyline points="0,50 20,42 40,38 60,30 80,25 100,20 120,22 140,18 160,15 180,20 200,24 220,18 240,12 260,10" fill="none" stroke="#00d4ff" stroke-width="2"/>
+              <polyline points="0,50 20,42 40,38 60,30 80,25 100,20 120,22 140,18 160,15 180,20 200,24 220,18 240,12 260,10" fill="url(#areaFill)" stroke="none" opacity="0.15"/>
               <defs>
                 <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stop-color="#00d4ff"/>
@@ -295,7 +289,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
@@ -318,8 +311,8 @@
         <div class="fl-col">
           <div class="fl-title">COMPTE</div>
           <a href="account.html">Connexion</a>
-          <a href="account.html#register">Inscription</a>
-          <a href="account.html#downloads">Mes setups</a>
+          <a href="account.html">Inscription</a>
+          <a href="account.html">Mes setups</a>
         </div>
         <div class="fl-col">
           <div class="fl-title">AIDE</div>
@@ -330,7 +323,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Apex Setups. Tous droits réservés.</span>
+      <span>© 2026 Apex Setups. Tous droits réservés.</span>
       <span>Site de démonstration — Paiements simulés</span>
     </div>
   </div>
