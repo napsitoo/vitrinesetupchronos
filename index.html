@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX SETUPS — Pro Sim Racing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-bar"></div>
+  <div class="loader-text">APEX SETUPS<span class="blink">_</span></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="shop.html">SETUPS</a></li>
+      <li><a href="coaching.html">COACHING</a></li>
+      <li><a href="index.html#games">JEUX</a></li>
+      <li><a href="index.html#about">À PROPOS</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cartCount">0</span></a>
+      <a href="account.html" class="btn-login" id="navLoginBtn">CONNEXION</a>
+    </div>
+    <button class="nav-burger" id="navBurger">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="shop.html">SETUPS</a>
+    <a href="coaching.html">COACHING</a>
+    <a href="index.html#games">JEUX</a>
+    <a href="account.html">MON COMPTE</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+  </div>
+
+  <!-- Animated race line -->
+  <div class="race-line"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      PRO SETUPS · ACC · LMU
+    </div>
+    <h1 class="hero-title">
+      <span class="line line-1">DOMINE</span>
+      <span class="line line-2">LE <em>CHRONO</em></span>
+    </h1>
+    <p class="hero-sub">Setups professionnels & coaching pour Assetto Corsa Competizione et Le Mans Ultimate. Pilotes officiels. Résultats garantis.</p>
+    <div class="hero-cta">
+      <a href="shop.html" class="btn-primary">VOIR LES SETUPS</a>
+      <a href="coaching.html" class="btn-ghost">COACHING →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="340">0</span><span class="stat-label">Setups</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" data-target="1200">0</span><span class="stat-label">Clients</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><span class="stat-num" data-target="98">0</span>%<span class="stat-label">Satisfaction</span></div>
+    </div>
+  </div>
+
+  <!-- Car silhouette (SVG) -->
+  <div class="hero-car">
+    <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" class="car-svg">
+      <defs>
+        <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.8"/>
+          <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.9"/>
+          <stop offset="100%" style="stop-color:#ff6b00;stop-opacity:0.8"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- GT3 Car silhouette -->
+      <g filter="url(#glow)" opacity="0.85">
+        <!-- Body -->
+        <path d="M120,200 L130,160 L200,120 L280,100 L420,90 L560,95 L650,110 L720,140 L760,170 L770,200 Z" fill="url(#carGrad)" opacity="0.3"/>
+        <path d="M120,200 L130,160 L200,120 L280,100 L420,90 L560,95 L650,110 L720,140 L760,170 L770,200" fill="none" stroke="url(#carGrad)" stroke-width="2.5"/>
+        <!-- Roof -->
+        <path d="M250,100 L290,70 L430,55 L530,58 L590,80 L610,100" fill="none" stroke="url(#carGrad)" stroke-width="2" opacity="0.7"/>
+        <!-- Front splitter -->
+        <path d="M760,200 L790,200 L790,205 L760,205 Z" fill="#ff6b00" opacity="0.8"/>
+        <!-- Rear wing -->
+        <path d="M120,155 L100,155 L95,145 L125,145" fill="none" stroke="#00d4ff" stroke-width="2"/>
+        <!-- Wheels -->
+        <circle cx="230" cy="210" r="38" fill="none" stroke="url(#carGrad)" stroke-width="2.5"/>
+        <circle cx="230" cy="210" r="20" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="660" cy="210" r="38" fill="none" stroke="url(#carGrad)" stroke-width="2.5"/>
+        <circle cx="660" cy="210" r="20" fill="none" stroke="#ff6b00" stroke-width="1.5" opacity="0.5"/>
+        <!-- Wheel arches -->
+        <path d="M170,200 Q175,165 230,162 Q285,165 290,200" fill="none" stroke="url(#carGrad)" stroke-width="1.5"/>
+        <path d="M600,200 Q605,165 660,162 Q715,165 720,200" fill="none" stroke="url(#carGrad)" stroke-width="1.5"/>
+        <!-- Details -->
+        <line x1="400" y1="90" x2="400" y2="200" stroke="#ffffff" stroke-width="0.5" opacity="0.2"/>
+        <path d="M310,100 L310,115 L380,110 L380,95" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+        <!-- Headlights -->
+        <path d="M755,155 L775,158 L775,168 L755,165 Z" fill="#00d4ff" opacity="0.9"/>
+        <!-- Ground effect line -->
+        <line x1="90" y1="220" x2="800" y2="220" stroke="url(#carGrad)" stroke-width="1" opacity="0.3"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- GAMES SECTION -->
+<section id="games" class="section-games">
+  <div class="container">
+    <div class="section-label">PLATEFORMES SUPPORTÉES</div>
+    <h2 class="section-title">Choisis ton <span class="text-accent">univers</span></h2>
+    <div class="games-grid">
+      <div class="game-card game-acc" data-href="shop.html?game=acc">
+        <div class="game-bg"></div>
+        <div class="game-content">
+          <div class="game-tag">GT3 · GT4 · GTC</div>
+          <h3>ASSETTO CORSA<br><strong>COMPETIZIONE</strong></h3>
+          <p>Nürburgring, Spa, Monza — maîtrise chaque virage.</p>
+          <span class="game-cta">VOIR LES SETUPS →</span>
+        </div>
+        <div class="game-corner"></div>
+      </div>
+      <div class="game-card game-lmu" data-href="shop.html?game=lmu">
+        <div class="game-bg"></div>
+        <div class="game-content">
+          <div class="game-tag">HYPERCAR · LMP2 · GT3</div>
+          <h3>LE MANS<br><strong>ULTIMATE</strong></h3>
+          <p>Circuit de la Sarthe, Monza, Sebring — l'endurance au sommet.</p>
+          <span class="game-cta">VOIR LES SETUPS →</span>
+        </div>
+        <div class="game-corner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SETUPS -->
+<section id="featured" class="section-featured">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">BESTSELLERS</div>
+        <h2 class="section-title">Setups <span class="text-accent">populaires</span></h2>
+      </div>
+      <a href="shop.html" class="btn-ghost-sm">TOUT VOIR →</a>
+    </div>
+    <div class="setups-grid" id="featuredSetups">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- COACHING BANNER -->
+<section id="coaching-banner" class="section-coaching">
+  <div class="coaching-bg">
+    <div class="coaching-track"></div>
+  </div>
+  <div class="container">
+    <div class="coaching-content">
+      <div class="coaching-text">
+        <div class="section-label">COACHING 1-ON-1</div>
+        <h2>Passe au niveau<br><em>supérieur</em></h2>
+        <p>Sessions personnalisées avec nos pilotes professionnels. Analyse de télémétrie, débriefing vidéo, setup sur mesure.</p>
+        <ul class="coaching-list">
+          <li><span class="check">✓</span> Analyse de tes données iRacing / ACC / LMU</li>
+          <li><span class="check">✓</span> Setup personnalisé selon ton style de pilotage</li>
+          <li><span class="check">✓</span> Session vidéo 60 min avec un pro</li>
+          <li><span class="check">✓</span> Suivi post-session inclus</li>
+        </ul>
+        <a href="coaching.html" class="btn-primary">RÉSERVER UNE SESSION</a>
+      </div>
+      <div class="coaching-visual">
+        <div class="coaching-card">
+          <div class="cc-header">SESSION PRO</div>
+          <div class="cc-price">€<span class="cc-big">49</span></div>
+          <div class="cc-sub">/ session 60 min</div>
+          <div class="cc-divider"></div>
+          <div class="cc-feature">✓ Télémétrie analysée</div>
+          <div class="cc-feature">✓ 1 setup offert</div>
+          <div class="cc-feature">✓ Replay débriefing</div>
+          <a href="coaching.html" class="cc-btn">CHOISIR →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-testimonials">
+  <div class="container">
+    <div class="section-label">ILS EN PARLENT</div>
+    <h2 class="section-title">La <span class="text-accent">communauté</span></h2>
+    <div class="testimonials-track" id="testimonialsTrack">
+      <div class="testimonial-card">
+        <div class="tc-stars">★★★★★</div>
+        <p>"Setup Nürburgring ACC Ferrari 296 — j'ai gagné 1.8s du premier coup. Incroyable."</p>
+        <div class="tc-author"><span class="tc-name">@MaxSim_</span><span class="tc-game">ACC · GT3</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="tc-stars">★★★★★</div>
+        <p>"Le coaching m'a fait comprendre la fenêtre de pneu. Maintenant je gère mes stints en LMU comme un pro."</p>
+        <div class="tc-author"><span class="tc-name">@LucasRacer92</span><span class="tc-game">LMU · Hypercar</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="tc-stars">★★★★★</div>
+        <p>"Setup Spa LMU Toyota GR010 — directement compétitif en lobbies publics. Top 10 assuré."</p>
+        <div class="tc-author"><span class="tc-name">@Nadia_Endurance</span><span class="tc-game">LMU · GR010</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="tc-stars">★★★★★</div>
+        <p>"J'avais du mal à Monza en GT4. Le setup + la session coaching = 3s de gain net. Merci !"</p>
+        <div class="tc-author"><span class="tc-name">@SimDev_Remi</span><span class="tc-game">ACC · GT4</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="tc-stars">★★★★★</div>
+        <p>"Le rapport qualité/prix est imbattable. J'ai l'impression d'avoir un ingénieur de course dans la poche."</p>
+        <div class="tc-author"><span class="tc-name">@FabioVR46_SIM</span><span class="tc-game">ACC · GT3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">À PROPOS</div>
+        <h2>Des pilotes.<br>Pas des <em>algorithmeurs</em>.</h2>
+        <p>Apex Setups est créé par de vrais pilotes sim racing compétitifs. Chaque setup est testé en conditions de course réelles, sur chaque piste, par des pilotes classés dans le top 1% mondial.</p>
+        <p>Nos setups ne sont pas générés — ils sont pilotés, chronométrés, optimisés. Un setup = des heures de travail réel en piste virtuelle.</p>
+        <div class="about-nums">
+          <div class="an"><span>3+</span>ans d'expérience</div>
+          <div class="an"><span>2</span>pilotes officiels</div>
+          <div class="an"><span>Top 1%</span>mondiale</div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="telemetry-widget">
+          <div class="tw-header">
+            <span class="tw-dot green"></span>
+            <span class="tw-dot orange"></span>
+            <span class="tw-dot red"></span>
+            <span class="tw-title">TÉLÉMÉTRIE LIVE</span>
+          </div>
+          <div class="tw-data">
+            <div class="tw-row"><span>CIRCUIT</span><span class="tw-val">Spa-Francorchamps</span></div>
+            <div class="tw-row"><span>VOITURE</span><span class="tw-val">Ferrari 296 GT3</span></div>
+            <div class="tw-row"><span>MEILLEUR TOUR</span><span class="tw-val acc-color">2:18.412</span></div>
+            <div class="tw-row"><span>DELTA</span><span class="tw-val green-text">-1.847s</span></div>
+            <div class="tw-row"><span>TEMP. PNEU AVG</span><span class="tw-val">87°C</span></div>
+          </div>
+          <div class="tw-graph">
+            <svg viewBox="0 0 260 60" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,50 20,42 40,38 60,30 80,25 100,20 120,22 140,18 160,15 180,20 200,24 220,18 240,12 260,10"
+                fill="none" stroke="#00d4ff" stroke-width="2"/>
+              <polyline points="0,50 20,42 40,38 60,30 80,25 100,20 120,22 140,18 160,15 180,20 200,24 220,18 240,12 260,10"
+                fill="url(#areaFill)" stroke="none" opacity="0.15"/>
+              <defs>
+                <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00d4ff"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="tw-label">Évolution du delta au fil des tours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span></div>
+        <p>Pro sim racing setups & coaching pour ACC et Le Mans Ultimate.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">DISCORD</a>
+          <a href="#" class="social-btn">TWITCH</a>
+          <a href="#" class="social-btn">YOUTUBE</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="fl-col">
+          <div class="fl-title">PRODUITS</div>
+          <a href="shop.html?game=acc">Setups ACC</a>
+          <a href="shop.html?game=lmu">Setups LMU</a>
+          <a href="coaching.html">Coaching</a>
+        </div>
+        <div class="fl-col">
+          <div class="fl-title">COMPTE</div>
+          <a href="account.html">Connexion</a>
+          <a href="account.html#register">Inscription</a>
+          <a href="account.html#downloads">Mes setups</a>
+        </div>
+        <div class="fl-col">
+          <div class="fl-title">AIDE</div>
+          <a href="#">Comment installer un setup</a>
+          <a href="#">FAQ</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Apex Setups. Tous droits réservés.</span>
+      <span>Site de démonstration — Paiements simulés</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

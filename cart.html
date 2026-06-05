@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement | APEX SETUPS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span></a>
+  </div>
+</nav>
+
+<div class="page-header" style="padding-bottom: 20px;">
+  <h1>FINALISER <span class="text-accent">LA COMMANDE</span></h1>
+</div>
+
+<div class="checkout-layout">
+  <div class="checkout-main">
+    <div class="checkout-section">
+      <div class="checkout-section-title">1. INFORMATIONS PILOTE</div>
+      <div class="form-grid">
+        <div class="form-group"><label>PRÉNOM</label><input type="text" placeholder="Ayrton"></div>
+        <div class="form-group"><label>NOM</label><input type="text" placeholder="Senna"></div>
+        <div class="form-group full"><label>EMAIL (Pour recevoir les fichiers)</label><input type="email" placeholder="pilote@apex.com"></div>
+      </div>
+    </div>
+    
+    <div class="checkout-section">
+      <div class="checkout-section-title">2. PAIEMENT SÉCURISÉ</div>
+      <div class="payment-card">
+        <div class="payment-logos">
+          <span class="pay-logo active">CB</span><span class="pay-logo">VISA</span>
+        </div>
+        <div class="form-group full" style="margin-bottom: 15px;">
+          <label>NUMÉRO DE CARTE FICTIF</label>
+          <input type="text" value="4000 1234 5678 9010" readonly style="color: var(--acc-cyan); font-family: monospace;">
+          <div class="test-info"><strong>MODE TEST ACTIVÉ</strong>Utilise les données pré-remplies.</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group"><label>EXPIRATION</label><input type="text" value="12/29" readonly></div>
+          <div class="form-group"><label>CVC</label><input type="text" value="123" readonly></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="order-summary">
+      <div class="os-title">RÉSUMÉ DU PANIER</div>
+      <div class="os-items" id="cartItems">
+        </div>
+      <div class="os-totals">
+        <div class="os-total">
+          <span>TOTAL</span>
+          <span class="text-accent" id="cartTotal">€0.00</span>
+        </div>
+      </div>
+      <button class="pay-btn" id="payBtn">CONFIRMER LE PAIEMENT</button>
+      <div class="secure-badge">🔒 Paiement chiffré de bout en bout</div>
+    </div>
+  </aside>
+</div>
+
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon" style="color: #00d46a;">✓</div>
+    <h2>PAIEMENT VALIDÉ</h2>
+    <p>Tes setups et fichiers MoTeC t'ont été envoyés par email. On se retrouve en piste !</p>
+    <a href="shop.html" class="modal-btn">RETOURNER AU PADDOCK</a>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Pilote | APEX SETUPS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav id="navbar"><div class="nav-inner"><a href="index.html" class="nav-logo"><span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span></a></div></nav>
+
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-box">
+    <div class="auth-header">
+      <div class="auth-tabs"><div class="auth-tab active">CONNEXION PILOTE</div></div>
+      <a href="index.html" class="auth-close">×</a>
+    </div>
+    <div class="auth-body">
+      <form class="auth-form" id="loginForm">
+        <div class="auth-info">Identifiants test : <strong>admin@apex.com</strong> / <strong>1234</strong></div>
+        <div class="form-group"><label>EMAIL</label><input type="email" id="email" value="admin@apex.com"></div>
+        <div class="form-group"><label>MOT DE PASSE</label><input type="password" id="pwd" value="1234"></div>
+        <div class="auth-error" id="authError">Identifiants incorrects.</div>
+        <div class="auth-success" id="authSuccess">Connexion réussie, allumage des moteurs...</div>
+        <button type="submit" class="auth-btn">SE CONNECTER</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="account-page" id="accountDashboard">
+  <div class="account-welcome">
+    <div class="section-label">TELEMETRIE</div>
+    <h1>BIENVENUE, <span id="userNameDisplay">Pilote</span></h1>
+  </div>
+  <div class="account-tabs">
+    <div class="acc-tab active">MES SETUPS</div>
+  </div>
+  <div class="acc-tab-content active">
+    <div class="downloads-grid">
+      <div class="download-item">
+        <div class="di-info">
+          <span class="di-name">Ferrari 296 GT3 - Spa-Francorchamps</span>
+          <span class="di-meta">ACC | Acheté le 12/04/2026</span>
+        </div>
+        <button class="di-btn" onclick="alert('Téléchargement du fichier .json lancé !')">TÉLÉCHARGER</button>
+      </div>
+      <div class="download-item" style="border-top: none;">
+        <div class="di-info">
+          <span class="di-name">Porsche 963 LMDh - Le Mans</span>
+          <span class="di-meta">LMU | Acheté le 15/05/2026</span>
+        </div>
+        <button class="di-btn" onclick="alert('Téléchargement du fichier .json lancé !')">TÉLÉCHARGER</button>
+      </div>
+    </div>
+    <button onclick="logout()" style="margin-top: 40px; background: transparent; border: 1px solid #ff3366; color: #ff3366; padding: 10px 20px; cursor:pointer;">DÉCONNEXION</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

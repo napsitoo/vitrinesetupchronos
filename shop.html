@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique Setups | APEX SETUPS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-apex">APEX</span><span class="logo-setups">SETUPS</span></a>
+    <ul class="nav-links">
+      <li><a href="shop.html" style="color: var(--text-primary);">SETUPS</a></li>
+      <li><a href="coaching.html">COACHING</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count">0</span></a>
+      <a href="account.html" class="btn-login" id="navLoginBtn">CONNEXION</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="section-label">CATALOGUE</div>
+  <h1>SETUPS <span class="text-accent">PRO</span></h1>
+  <p>Choisis ton simulateur et domine le chrono.</p>
+</div>
+
+<div class="shop-layout">
+  <aside class="shop-filters">
+    <div class="filter-section">
+      <div class="filter-title">SIMULATEURS</div>
+      <div class="filter-options">
+        <button class="filter-btn active" data-filter="all">Tous les Setups</button>
+        <button class="filter-btn" data-filter="acc">Assetto Corsa Competizione <span class="filter-count">ACC</span></button>
+        <button class="filter-btn" data-filter="lmu">Le Mans Ultimate <span class="filter-count">LMU</span></button>
+      </div>
+    </div>
+  </aside>
+  <main class="shop-main">
+    <div class="shop-toolbar">
+      <div class="shop-count" id="shopCount">Chargement...</div>
+    </div>
+    <div class="shop-grid" id="shopGrid">
+      </div>
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
